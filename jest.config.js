@@ -5,18 +5,17 @@ const { pathsToModuleNameMapper } = require('ts-jest');
 /** @type {import('jest').Config} */
 module.exports = {
   moduleFileExtensions: ['js', 'json', 'ts'],
-  // collectCoverage: true,
+  collectCoverage: true,
   coverageProvider: 'v8',
   transform: {
     '^.+\\.(js|ts)$': 'ts-jest',
   },
   collectCoverageFrom: [
     '**/*.{js,jsx,ts,tsx}',
-    '!**/*.stories.{js,jsx,ts,tsx}',
     '!**/*.d.ts',
     '!**/node_modules/**',
     '!<rootDir>/out/**',
-    '!<rootDir>/.next/**',
+    '!<rootDir>/dist/**',
     '!<rootDir>/*.config.js',
     '!<rootDir>/coverage/**',
   ],
