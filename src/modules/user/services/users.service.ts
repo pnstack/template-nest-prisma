@@ -1,14 +1,13 @@
 import { Injectable } from '@nestjs/common';
+
 import { Prisma, PrismaService } from 'src/common/prisma/prisma';
 import { PasswordService } from 'src/modules/auth/password.service';
+
 import { UserServiceBase } from '../base/user.service.base';
 
 @Injectable()
 export class UsersService extends UserServiceBase {
-  constructor(
-    protected prisma: PrismaService,
-    protected passwordService: PasswordService
-  ) {
+  constructor(protected prisma: PrismaService, protected passwordService: PasswordService) {
     super(prisma, passwordService);
   }
 
@@ -22,11 +21,8 @@ export class UsersService extends UserServiceBase {
       .UserRole();
   }
 
-
   async createUser(args: Prisma.UserCreateArgs, roles?: string[]) {
-    const hashedPassword = await this.passwordService.hashPassword(
-      args.data.password
-    );
+    const hashedPassword = await this.passwordService.hashPassword(args.data.password);
     args.data.password = hashedPassword;
     const user = await this.prisma.user.create({
       data: {
@@ -39,9 +35,7 @@ export class UsersService extends UserServiceBase {
 
   async updateUser(args: Prisma.UserUpdateArgs, roles?: string[]) {
     if (args.data.password) {
-      const hashedPassword = await this.passwordService.hashPassword(
-        args.data.password as string
-      );
+      const hashedPassword = await this.passwordService.hashPassword(args.data.password as string);
       args.data.password = hashedPassword;
     } else {
       delete args.data.password;

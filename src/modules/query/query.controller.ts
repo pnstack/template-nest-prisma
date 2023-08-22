@@ -1,17 +1,9 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-  Request,
-} from '@nestjs/common';
-import { QueryService } from './query.service';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Request } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
+
 import { CreateQueryDto } from './dto/create-query.dto';
 import { UpdateQueryDto } from './dto/update-query.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { QueryService } from './query.service';
 
 @ApiTags('Query')
 @Controller('query')

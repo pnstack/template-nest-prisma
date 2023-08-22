@@ -1,18 +1,17 @@
-import { AuthService } from './../../modules/auth/auth.service';
-import { GraphqlConfig } from '../configs/config.interface';
-import { ConfigService } from '@nestjs/config';
 import { ApolloDriverConfig } from '@nestjs/apollo';
 import { forwardRef, Inject, Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { GqlOptionsFactory } from '@nestjs/graphql';
 import { AuthenticationError } from 'apollo-server-express';
 import GraphQLJSON from 'graphql-type-json';
 
+import { GraphqlConfig } from '../configs/config.interface';
+
+import { AuthService } from './../../modules/auth/auth.service';
+
 @Injectable()
 export class GqlConfigService implements GqlOptionsFactory {
-  constructor(
-    private configService: ConfigService,
-    private authService: AuthService
-  ) {}
+  constructor(private configService: ConfigService, private authService: AuthService) {}
   createGqlOptions(): ApolloDriverConfig {
     const graphqlConfig = this.configService.get<GraphqlConfig>('graphql');
     return {
@@ -47,8 +46,7 @@ export class GqlConfigService implements GqlOptionsFactory {
             if (!connectionParams?.headers?.Authorization) {
               throw new AuthenticationError('authToken must be provided');
             }
-            const token =
-              connectionParams?.headers?.Authorization.split(' ')[1];
+            const token = connectionParams?.headers?.Authorization.split(' ')[1];
             console.log('token', token);
             if (!token) {
               throw new AuthenticationError('authToken must be provided');
@@ -59,13 +57,10 @@ export class GqlConfigService implements GqlOptionsFactory {
             // console.log('user', user);
             // return { user };
 
-            const headers = Object.keys(connectionParams?.headers).reduce(
-              (dest, key) => {
-                dest[key.toLowerCase()] = connectionParams?.headers[key];
-                return dest;
-              },
-              {}
-            );
+            const headers = Object.keys(connectionParams?.headers).reduce((dest, key) => {
+              dest[key.toLowerCase()] = connectionParams?.headers[key];
+              return dest;
+            }, {});
             // return header for passport
             return {
               req: {

@@ -1,11 +1,7 @@
-import { AuthService } from '@modules/auth/auth.service';
-import {
-  ExecutionContext,
-  Injectable,
-  UnauthorizedException,
-} from '@nestjs/common';
+import { ExecutionContext, Injectable, UnauthorizedException } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { AuthGuard } from '@nestjs/passport';
+import { AuthService } from '@modules/auth/auth.service';
 
 @Injectable()
 export class JwtGuard extends AuthGuard('jwt') {
@@ -15,7 +11,7 @@ export class JwtGuard extends AuthGuard('jwt') {
   async canActivate(context: ExecutionContext) {
     await super.canActivate(context);
     const { user } = context.switchToHttp().getRequest();
-    const roles = this.reflector.getAllAndOverride<String[]>('roles', [
+    const roles = this.reflector.getAllAndOverride<string[]>('roles', [
       context.getHandler(),
       context.getClass(),
     ]);

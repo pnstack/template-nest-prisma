@@ -1,4 +1,4 @@
-import { Field, Int, ArgsType } from '@nestjs/graphql';
+import { ArgsType, Field, Int } from '@nestjs/graphql';
 
 @ArgsType()
 class DeleteUserArgs {

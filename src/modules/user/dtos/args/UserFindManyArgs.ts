@@ -1,6 +1,7 @@
 import { ArgsType, Field, InputType } from '@nestjs/graphql';
 import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
+
 import { UserOrderByInput } from '../inputs/UserOrderByInput';
 import { UserWhereInput } from '../inputs/UserWhereInput';
 

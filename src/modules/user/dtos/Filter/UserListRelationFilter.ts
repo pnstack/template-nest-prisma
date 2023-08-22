@@ -9,11 +9,12 @@ https://docs.amplication.com/how-to/custom-code
 
 ------------------------------------------------------------------------------
   */
-import { InputType, Field } from "@nestjs/graphql";
-import { ApiProperty } from "@nestjs/swagger";
-import { UserWhereInput } from "../inputs/UserWhereInput";
-import { ValidateNested, IsOptional } from "class-validator";
-import { Type } from "class-transformer";
+import { Field, InputType } from '@nestjs/graphql';
+import { ApiProperty } from '@nestjs/swagger';
+import { Type } from 'class-transformer';
+import { IsOptional, ValidateNested } from 'class-validator';
+
+import { UserWhereInput } from '../inputs/UserWhereInput';
 
 @InputType()
 class UserListRelationFilter {

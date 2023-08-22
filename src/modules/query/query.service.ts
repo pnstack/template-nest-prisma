@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
+import { PrismaService } from 'nestjs-prisma';
+import { format } from 'node-pg-format';
+
 import { CreateQueryDto } from './dto/create-query.dto';
 import { UpdateQueryDto } from './dto/update-query.dto';
-import { format } from 'node-pg-format';
-import { PrismaService } from 'nestjs-prisma';
 
 export interface HasuraOperation {
   type: 'run_sql';
@@ -61,17 +62,13 @@ export class QueryService {
     const query1 = makeQuery(
       'public',
       `SELECT row_to_json(table_data) as data FROM information_schema.schemata table_data WHERE %s ORDER BY schema_name ASC`,
-      SYSTEM_TABLES.map((value) => `schema_name NOT LIKE '${value}'`).join(
-        ' AND '
-      )
+      SYSTEM_TABLES.map((value) => `schema_name NOT LIKE '${value}'`).join(' AND ')
     );
     const res1 = await this.prisma.$queryRawUnsafe(query1.args.sql);
     const query2 = makeQuery(
       'public',
       `SELECT row_to_json(table_data) as data FROM information_schema.tables table_data WHERE %s ORDER BY table_name ASC`,
-      SYSTEM_TABLES.map((value) => `table_schema NOT LIKE '${value}'`).join(
-        ' AND '
-      )
+      SYSTEM_TABLES.map((value) => `table_schema NOT LIKE '${value}'`).join(' AND ')
     );
     const res2 = await this.prisma.$queryRawUnsafe(query2.args.sql);
     return [res1, res2];

@@ -1,2 +1,2 @@
 build:
-	docker build -t auth_service .
+	docker build -t temmplate-nest-prisma .

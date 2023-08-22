@@ -11,6 +11,7 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { Prisma, PrismaService, User } from 'src/common/prisma/prisma';
 import { transformStringFieldUpdateInput } from 'src/utils/prisma.util';
+
 import { PasswordService } from '../../auth/password.service';
 
 export class UserServiceBase {
@@ -60,9 +61,8 @@ export class UserServiceBase {
 
         password:
           args.data.password &&
-          (await transformStringFieldUpdateInput(
-            args.data.password,
-            (password) => this.passwordService.hashPassword(password)
+          (await transformStringFieldUpdateInput(args.data.password, (password) =>
+            this.passwordService.hashPassword(password)
           )),
       },
     });
