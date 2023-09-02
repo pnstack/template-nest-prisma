@@ -3,8 +3,8 @@ import { ApiBearerAuth, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Response } from 'express';
 
 import { User } from '@/shared/prisma';
-import { ReqUser } from 'src/common/decorators/user.decorator';
-import { GoogleOauthGuard, JwtGuard } from 'src/common/guards';
+import { ReqUser } from '@/common/decorators/user.decorator';
+import { GoogleOauthGuard, JwtGuard } from '@/common/guards';
 
 import { LoginInput } from './dtos/inputs/LoginInput';
 import { SignupInput } from './dtos/inputs/SignupInput';

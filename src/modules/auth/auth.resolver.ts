@@ -3,8 +3,8 @@ import { Args, Mutation, Query, Resolver, Subscription } from '@nestjs/graphql';
 import { User } from '@modules/user/entities/User';
 import { PubSub } from 'graphql-subscriptions';
 
-import { Roles, UserEntity } from 'src/common/decorators';
-import { GqlAuthGuard } from 'src/common/guards';
+import { Roles, UserEntity } from '@/common/decorators';
+import { GqlAuthGuard } from '@/common/guards';
 
 import { LoginInput } from './dtos/inputs/LoginInput';
 import {
