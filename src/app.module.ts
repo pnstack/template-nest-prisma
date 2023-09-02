@@ -1,11 +1,8 @@
-import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { BullModule } from '@nestjs/bull';
 import { Logger, Module } from '@nestjs/common';
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import { GraphQLModule } from '@nestjs/graphql';
+import { ConfigModule } from '@nestjs/config';
 import { ScheduleModule } from '@nestjs/schedule';
 import { ServeStaticModule } from '@nestjs/serve-static';
-import { AuthService } from '@modules/auth/auth.service';
 import { join } from 'path';
 
 import config from 'src/common/configs/config';
@@ -14,26 +11,20 @@ import { PrismaModule } from 'src/common/prisma/prisma';
 import { AuthModule } from 'src/modules/auth/auth.module';
 import { UsersModule } from 'src/modules/user/users.module';
 
-import { GqlConfigService } from './common/graphql/gql-config.service';
-import { QueryModule } from './modules/query/query.module';
+import { GraphQLModule } from './shared/graphql';
 import { customPrismaMiddleware } from './utils/prisma.util';
 
 @Module({
   imports: [
-    ScheduleModule.forRoot(),
     ConfigModule.forRoot({ isGlobal: true, load: [config] }),
+    ScheduleModule.forRoot(),
     PrismaModule.forRoot({
       isGlobal: true,
       prismaServiceOptions: {
         middlewares: [loggingMiddleware(new Logger('PrismaMiddleware')), customPrismaMiddleware()], // configure your prisma middleware
       },
     }),
-    GraphQLModule.forRootAsync<ApolloDriverConfig>({
-      imports: [AuthModule],
-      useClass: GqlConfigService,
-      driver: ApolloDriver,
-      inject: [ConfigService, AuthService],
-    }),
+    GraphQLModule,
     BullModule.forRoot({
       redis: {
         host: process.env.REDIS_HOST || 'localhost',
@@ -47,7 +38,6 @@ import { customPrismaMiddleware } from './utils/prisma.util';
     }),
     AuthModule,
     UsersModule,
-    QueryModule,
   ],
   controllers: [],
   providers: [],
