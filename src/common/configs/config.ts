@@ -9,10 +9,10 @@ const config: Config = {
   },
   swagger: {
     enabled: true,
-    title: 'Nestjs FTW',
-    description: 'The nestjs API description',
-    version: '1.5',
-    path: 'api',
+    title: 'API',
+    description: 'API description',
+    version: '1.0',
+    path: process.env.SWAGGER_API_ROOT || 'api',
   },
   security: {
     expiresIn: '7d',
@@ -24,13 +24,6 @@ const config: Config = {
     debug: true,
     playgroundEnabled: true,
     sortSchema: true,
-  },
-  s3Storage: {
-    endpoint: 'http://127.0.0.1:9000',
-    accessKeyId: 'cDQeMNHRdmd1lrP5',
-    secretAccessKey: 'i4QzmYWm4IE59HYotWmO4LNAVxI5WbbA',
-    // bucket: 'nestjs',
-    region: 'auto',
   },
 };
 
