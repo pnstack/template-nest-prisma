@@ -1,4 +1,4 @@
-import { Prisma } from 'src/common/prisma/prisma';
+import { Prisma } from '../';
 
 export function loggingMiddleware(logger: any = console): Prisma.Middleware {
   return async (params, next) => {

@@ -2,10 +2,9 @@ generator client {
   provider = "prisma-client-js"
 }
 
-// generator typegraphql {
-//   provider = "typegraphql-prisma"
-//   output   = "./src/generated/type-graphql"
-// }
+generator dbml {
+  provider = "prisma-dbml-generator"
+}
 
 datasource db {
   provider = "postgresql"

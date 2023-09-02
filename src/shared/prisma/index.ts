@@ -1,7 +1,9 @@
 import { INestApplication } from '@nestjs/common';
 import { PrismaService } from 'nestjs-prisma';
-export * from 'nestjs-prisma';
+
+export * from './prisma.module';
 export * from '@prisma/client';
+export { PrismaService };
 
 /**
  * It enables shutdown hooks for Prisma
