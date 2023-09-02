@@ -8,3 +8,4 @@ coverage/
 prisma/migrations/dev/
 
 .env
+prisma/dbml/schema.dbml
