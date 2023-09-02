@@ -40,10 +40,11 @@ model User {
   phone        String?
   bio          String?
   gender       Boolean?
-  cvFileId     Int?
   picture      String?
   Provider     AuthProviderUser[]
   UserRole     UserRole[]
+
+  createdAt DateTime? @default(now())
 }
 
 model UserRole {
