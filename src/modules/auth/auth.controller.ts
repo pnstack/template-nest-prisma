@@ -2,9 +2,9 @@ import { Body, Controller, Get, Post, Req, Res, UseGuards } from '@nestjs/common
 import { ApiBearerAuth, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Response } from 'express';
 
+import { User } from '@/shared/prisma';
 import { ReqUser } from 'src/common/decorators/user.decorator';
 import { GoogleOauthGuard, JwtGuard } from 'src/common/guards';
-import { User } from 'src/common/prisma/prisma';
 
 import { LoginInput } from './dtos/inputs/LoginInput';
 import { SignupInput } from './dtos/inputs/SignupInput';

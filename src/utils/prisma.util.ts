@@ -28,13 +28,3 @@ export async function transformStringFieldUpdateInput<
   }
   return input;
 }
-
-export function customPrismaMiddleware(): Prisma.Middleware {
-  return async (params, next) => {
-    const result = await next(params);
-
-    return JSON.parse(
-      JSON.stringify(result, (key, value) => (typeof value === 'bigint' ? value.toString() : value))
-    );
-  };
-}

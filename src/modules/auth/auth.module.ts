@@ -3,6 +3,7 @@ import { ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 
+import { PubSubModule } from '@/shared/graphql/pubsub.module';
 import { SecurityConfig } from 'src/common/configs/config.interface';
 import { GqlAuthGuard } from 'src/common/guards';
 import { WsGuard } from 'src/common/guards/ws/ws.guard';
@@ -15,7 +16,6 @@ import { AuthResolver } from './auth.resolver';
 import { AuthService } from './auth.service';
 import { JwtStrategy } from './jwt.strategy';
 import { PasswordService } from './password.service';
-import { PubSubModule } from '@/shared/graphql/pubsub.module';
 
 @Global()
 @Module({

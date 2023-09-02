@@ -34,4 +34,3 @@ export interface GraphqlConfig {
   schemaDestination: string;
   sortSchema: boolean;
 }
-

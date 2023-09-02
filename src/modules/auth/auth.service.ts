@@ -9,8 +9,8 @@ import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { User } from '@modules/user/entities/User';
 
+import { Prisma, PrismaService, UserRole } from '@/shared/prisma';
 import { SecurityConfig } from 'src/common/configs/config.interface';
-import { Prisma, PrismaService, UserRole } from 'src/common/prisma/prisma';
 import { generateRandomPassword } from 'src/utils/tool';
 
 import { UsersService } from '../user/services/users.service';

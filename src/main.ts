@@ -4,10 +4,11 @@ import { json, urlencoded } from 'express';
 
 import { AppModule } from '@/app.module';
 import { HttpExceptionFilter } from '@/common/filters/HttpExceptions.filter';
-import { setupPrisma } from '@/common/prisma/prisma';
 import { setupSocket } from '@/common/socket/socket';
 import { setupSwagger } from '@/common/swagger';
 import type { NestConfig } from 'src/common/configs/config.interface';
+
+import { setupPrisma } from './shared/prisma';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
