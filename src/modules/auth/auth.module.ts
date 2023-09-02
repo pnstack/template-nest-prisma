@@ -4,9 +4,9 @@ import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 
 import { PubSubModule } from '@/shared/graphql/pubsub.module';
-import { SecurityConfig } from 'src/common/configs/config.interface';
-import { GqlAuthGuard } from 'src/common/guards';
-import { WsGuard } from 'src/common/guards/ws/ws.guard';
+import { SecurityConfig } from '@/common/configs/config.interface';
+import { GqlAuthGuard } from '@/common/guards';
+import { WsGuard } from '@/common/guards/ws/ws.guard';
 
 import { UsersModule } from '../user/users.module';
 

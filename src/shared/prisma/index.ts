@@ -12,6 +12,6 @@ export { PrismaService };
 export const setupPrisma = async (app: INestApplication) => {
   // enable shutdown hook
   const prismaService = app.get(PrismaService);
-  await prismaService.enableShutdownHooks(app);
+  // await prismaService.enableShutdownHooks(app);
   console.log('Setup prisma success');
 };
