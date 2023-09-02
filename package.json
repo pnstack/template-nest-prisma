@@ -1,5 +1,5 @@
 {
-  "name": "@nstack/api",
+  "name": "@pnstack/api",
   "version": "0.0.0",
   "description": "api",
   "author": "npv2k1",
@@ -13,16 +13,16 @@
     "graphql"
   ],
   "scripts": {
-    "dev": "npm start:dev",
+    "dev": "npm run start:dev",
     "compodoc": "npx @compodoc/compodoc -p tsconfig.json -s",
     "prebuild": "rimraf dist",
     "build": "nest build",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "migrate:dev": "prisma migrate dev --preview-feature",
     "migrate:dev:create": "prisma migrate dev --create-only --preview-feature",
     "migrate:reset": "prisma migrate reset --preview-feature",
