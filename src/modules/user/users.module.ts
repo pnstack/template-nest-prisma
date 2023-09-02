@@ -2,9 +2,10 @@ import { Module } from '@nestjs/common';
 
 import { PasswordService } from '@/modules/auth/password.service';
 
-import { UserResolver } from './resolvers/users.resolver';
-import { UsersService } from './services/users.service';
+
 import { UsersController } from './users.controller';
+import { UserResolver } from './users.resolver';
+import { UsersService } from './users.service';
 
 @Module({
   imports: [],

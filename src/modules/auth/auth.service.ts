@@ -13,7 +13,7 @@ import { User } from '@/modules/user/entities/User';
 import { Prisma, PrismaService, UserRole } from '@/shared/prisma';
 import { generateRandomPassword } from '@/utils/tool';
 
-import { UsersService } from '../user/services/users.service';
+import { UsersService } from '@/modules/user/users.service';
 
 import { LoginInput } from './dtos/inputs/LoginInput';
 import { ChangePasswordInput, ResetPasswordInput } from './dtos/inputs/reset-password.input';
