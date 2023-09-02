@@ -1,0 +1,63 @@
+//// ------------------------------------------------------
+//// THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+//// ------------------------------------------------------
+
+Table AuthProvider {
+  providerId String [pk]
+  name String [not null]
+  description String
+  createAt DateTime [default: `now()`, not null]
+  AuthProviderUser AuthProviderUser [not null]
+}
+
+Table AuthProviderUser {
+  id Int [pk, increment]
+  AuthProviderId String
+  userId Int
+  createAt DateTime [default: `now()`, not null]
+  AuthProvider AuthProvider
+  User User
+}
+
+Table User {
+  id Int [pk, increment]
+  email String [unique, not null]
+  password String [not null]
+  fullName String
+  address String
+  avatarFileId Int
+  dateOfBirth DateTime
+  phone String
+  bio String
+  gender Boolean
+  picture String
+  Provider AuthProviderUser [not null]
+  UserRole UserRole [not null]
+  createdAt DateTime [default: `now()`]
+}
+
+Table UserRole {
+  id Int [pk, increment]
+  userId Int [not null]
+  roleName String [not null]
+  Role Role [not null]
+  User User [not null]
+
+  indexes {
+    (userId, roleName) [unique]
+  }
+}
+
+Table Role {
+  name String [pk]
+  description String
+  UserRole UserRole [not null]
+}
+
+Ref: AuthProviderUser.AuthProviderId > AuthProvider.providerId
+
+Ref: AuthProviderUser.userId > User.id
+
+Ref: UserRole.roleName > Role.name
+
+Ref: UserRole.userId > User.id
