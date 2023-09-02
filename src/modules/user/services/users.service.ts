@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 
-import { Prisma, PrismaService } from '@/shared/prisma';
 import { PasswordService } from '@/modules/auth/password.service';
+import { Prisma, PrismaService } from '@/shared/prisma';
 
 import { UserServiceBase } from '../base/user.service.base';
 

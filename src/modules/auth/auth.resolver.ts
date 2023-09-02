@@ -1,10 +1,10 @@
 import { Inject, Injectable, UseGuards } from '@nestjs/common';
 import { Args, Mutation, Query, Resolver, Subscription } from '@nestjs/graphql';
-import { User } from '@modules/user/entities/User';
 import { PubSub } from 'graphql-subscriptions';
 
 import { Roles, UserEntity } from '@/common/decorators';
 import { GqlAuthGuard } from '@/common/guards';
+import { User } from '@/modules/user/entities/User';
 
 import { LoginInput } from './dtos/inputs/LoginInput';
 import {

@@ -1,5 +1,6 @@
 import { ArgsType } from '@nestjs/graphql';
-import { CreateBaseArgs } from '@modules/common/dtos/args/CreateBaseArgs';
+
+import { CreateBaseArgs } from '@/modules/common/dtos/args/CreateBaseArgs';
 
 import { CreateUserInput } from '../inputs/create-user.input';
 

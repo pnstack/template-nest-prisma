@@ -15,7 +15,6 @@
     "skipLibCheck": true,
     "paths": {
       "@/*": ["src/*"],
-      "@modules/*": ["./src/modules/*"]
     }
   },
   "include": ["**/*.ts", "jest.config.js"],

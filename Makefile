@@ -1,5 +1,7 @@
 build:
 	docker build -t temmplate-nest-prisma .
+lint:
+	npm run lint
 migrate/dev:
 	prisma migrate dev --preview-feature
 migrate/dev/only:
