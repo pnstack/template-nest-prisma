@@ -1,14 +1,12 @@
 import { Injectable } from '@nestjs/common';
 
+import { PasswordService } from '@/modules/auth/password.service';
 import { Prisma, PrismaService } from '@/shared/prisma';
-import { PasswordService } from 'src/modules/auth/password.service';
 
-import { UserServiceBase } from '../base/user.service.base';
 
 @Injectable()
-export class UsersService extends UserServiceBase {
+export class UsersService  {
   constructor(protected prisma: PrismaService, protected passwordService: PasswordService) {
-    super(prisma, passwordService);
   }
 
   async getUserRole(id: number) {
@@ -30,7 +28,7 @@ export class UsersService extends UserServiceBase {
       },
     });
     await this.updateOrCreateRoles(user.id, roles);
-    return this.findOne({ where: { id: user.id } });
+    return this.prisma.user.findUnique({ where: { id: user.id } });
   }
 
   async updateUser(args: Prisma.UserUpdateArgs, roles?: string[]) {

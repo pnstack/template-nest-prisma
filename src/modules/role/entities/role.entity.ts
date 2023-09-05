@@ -3,7 +3,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsOptional, IsString } from 'class-validator';
 
 @ObjectType()
-class Role {
+export class Role {
   @ApiProperty({
     required: true,
     type: String,
@@ -23,4 +23,3 @@ class Role {
   })
   description!: string;
 }
-export { Role };

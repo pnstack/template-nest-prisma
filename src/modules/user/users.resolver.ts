@@ -1,29 +1,19 @@
 import { Args, Int, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
+import { UserFindByPkArgs } from './dtos/args/UserFindByPkArgs';
+import { UserFindManyArgs } from './dtos/args/UserFindManyArgs';
+import { CreateUserArgs } from './dtos/args/create-user.args';
+import { UpdateUserArgs } from './dtos/args/update-user.args';
+import { UserAggregateArgs } from './dtos/args/user-aggregate.args';
+import { User } from './entities/User';
+import { UserRole } from './entities/UserRole';
+import { UserAggregate } from './entities/user-aggregate.entity';
+import { UsersService } from './users.service';
 
-import { CreateUserArgs } from '../dtos/args/create-user.args';
-import { DeleteUserArgs } from '../dtos/args/DeleteUserArgs';
-import { UpdateUserArgs } from '../dtos/args/update-user.args';
-import { UserAggregateArgs } from '../dtos/args/user-aggregate.args';
-import { UserFindByPkArgs } from '../dtos/args/UserFindByPkArgs';
-import { UserFindManyArgs } from '../dtos/args/UserFindManyArgs';
-import { CreateUserInput } from '../dtos/inputs/create-user.input';
-import { User } from '../entities/User';
-import { UserAggregate } from '../entities/user-aggregate.entity';
-import { UserRole } from '../entities/UserRole';
-import { UsersService } from '../services/users.service';
 
 @Resolver(() => User)
 export class UserResolver {
   constructor(protected readonly userService: UsersService) {}
 
-  @Query(() => User, {
-    name: 'User_by_pk',
-  })
-  async findByPk(@Args() args: UserFindByPkArgs): Promise<User | null> {
-    const user = await this.userService.findOne({ where: { id: args.id } });
-    delete user.password;
-    return user;
-  }
 
   @Query(() => UserAggregate, {
     name: 'User_aggregate',
@@ -37,12 +27,6 @@ export class UserResolver {
     return result;
   }
 
-  @Query(() => [User], {
-    name: 'User',
-  })
-  async user(@Args() args: UserFindManyArgs): Promise<User[]> {
-    return this.userService.findMany(args);
-  }
 
   @Mutation(() => User)
   async createUser(@Args() args: CreateUserArgs) {

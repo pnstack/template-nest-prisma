@@ -52,9 +52,7 @@ type Mutation {
 
 type Query {
   Role: [Role!]!
-  User(orderBy: [UserOrderByInput!], skip: Int, take: Int, where: UserWhereInput): [User!]!
   User_aggregate(skip: Int, take: Int, where: UserWhereInput): UserAggregate!
-  User_by_pk(id: Int!): User!
   me: User!
 }
 
@@ -76,11 +74,6 @@ type Role {
 input SignupInput {
   email: String!
   password: String!
-}
-
-enum SortOrder {
-  Asc
-  Desc
 }
 
 input StringFilter {
@@ -131,10 +124,6 @@ type User {
 
 type UserAggregate {
   _count: Int
-}
-
-input UserOrderByInput {
-  id: SortOrder
 }
 
 type UserRole {

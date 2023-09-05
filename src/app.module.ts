@@ -5,10 +5,11 @@ import { ScheduleModule } from '@nestjs/schedule';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 
-import config from 'src/common/configs/config';
-import { AuthModule } from 'src/modules/auth/auth.module';
-import { UsersModule } from 'src/modules/user/users.module';
+import config from '@/common/configs/config';
+import { AuthModule } from '@/modules/auth/auth.module';
+import { UsersModule } from '@/modules/user/users.module';
 
+import { RoleModule } from './modules/role/role.module';
 import { GraphQLModule } from './shared/graphql';
 import { PrismaModule } from './shared/prisma';
 
@@ -31,6 +32,7 @@ import { PrismaModule } from './shared/prisma';
     }),
     AuthModule,
     UsersModule,
+    RoleModule,
   ],
   controllers: [],
   providers: [],

@@ -1,9 +1,10 @@
 import { Field, InputType, Int } from '@nestjs/graphql';
 import { ApiProperty } from '@nestjs/swagger';
-import { StringFilter } from '@modules/common/dtos/inputs/filters';
-import { IntFilter } from '@modules/common/dtos/inputs/filters/int-filter.input';
 import { Type } from 'class-transformer';
 import { IsOptional } from 'class-validator';
+
+import { StringFilter } from '@/modules/common/dtos/inputs/filters';
+import { IntFilter } from '@/modules/common/dtos/inputs/filters/int-filter.input';
 
 @InputType()
 export class UserWhereInput {
