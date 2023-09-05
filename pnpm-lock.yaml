@@ -260,7 +260,7 @@ devDependencies:
     specifier: 2.7.1
     version: 2.7.1
   prisma:
-    specifier: ^4.12.0
+    specifier: ^4.16.2
     version: 4.16.2
   prisma-dbml-generator:
     specifier: ^0.10.0
