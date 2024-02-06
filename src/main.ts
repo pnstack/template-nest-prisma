@@ -1,11 +1,13 @@
+import { ConfigService } from '@nestjs/config';
+import { HttpAdapterHost, NestFactory } from '@nestjs/core';
+import { json, urlencoded } from 'express';
+
 import { AppModule } from '@/app.module';
 import type { NestConfig } from '@/common/configs/config.interface';
 import { HttpExceptionFilter } from '@/common/filters/HttpExceptions.filter';
 import { setupSocket } from '@/common/socket/socket';
 import { setupSwagger } from '@/common/swagger';
-import { ConfigService } from '@nestjs/config';
-import { HttpAdapterHost, NestFactory } from '@nestjs/core';
-import { json, urlencoded } from 'express';
+
 import { setupPrisma } from './shared/prisma';
 
 async function bootstrap() {

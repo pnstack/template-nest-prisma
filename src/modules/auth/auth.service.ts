@@ -10,10 +10,9 @@ import { JwtService } from '@nestjs/jwt';
 
 import { SecurityConfig } from '@/common/configs/config.interface';
 import { User } from '@/modules/user/entities/User';
+import { UsersService } from '@/modules/user/users.service';
 import { Prisma, PrismaService, UserRole } from '@/shared/prisma';
 import { generateRandomPassword } from '@/utils/tool';
-
-import { UsersService } from '@/modules/user/users.service';
 
 import { LoginInput } from './dtos/inputs/LoginInput';
 import { ChangePasswordInput, ResetPasswordInput } from './dtos/inputs/reset-password.input';

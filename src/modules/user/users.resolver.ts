@@ -1,12 +1,13 @@
 import { Args, Int, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
-import { UserFindByPkArgs } from './dtos/args/UserFindByPkArgs';
-import { UserFindManyArgs } from './dtos/args/UserFindManyArgs';
+
 import { CreateUserArgs } from './dtos/args/create-user.args';
 import { UpdateUserArgs } from './dtos/args/update-user.args';
 import { UserAggregateArgs } from './dtos/args/user-aggregate.args';
+import { UserFindByPkArgs } from './dtos/args/UserFindByPkArgs';
+import { UserFindManyArgs } from './dtos/args/UserFindManyArgs';
 import { User } from './entities/User';
-import { UserRole } from './entities/UserRole';
 import { UserAggregate } from './entities/user-aggregate.entity';
+import { UserRole } from './entities/UserRole';
 import { UsersService } from './users.service';
 
 
